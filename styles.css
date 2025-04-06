@@ -1,0 +1,167 @@
+:root {
+    --primary: #ff69b4;
+    --secondary: #ff1493;
+    --accent: #ff8dc7;
+    --dark: #1a0f1f;
+    --light: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: var(--dark);
+    color: var(--light);
+    font-family: 'Poppins', sans-serif;
+    overflow: hidden;
+    min-height: 100vh;
+}
+
+#love-scene {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 0;
+}
+
+.message-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    max-width: 600px;
+    width: 90%;
+    margin: 0 auto;
+    z-index: 2;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* Add these media queries at the end of the file */
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: clamp(2rem, 8vw, 3rem);
+        margin-bottom: 1rem;
+    }
+
+    .message {
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .message-container {
+        padding: 2rem;
+    }
+
+    .love-button {
+        padding: 0.8rem 1.5rem;
+        font-size: 1rem;
+    }
+
+    .floating-heart {
+        font-size: 1.5rem;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .message-container {
+        padding: 1.5rem;
+        width: 95%;
+    }
+
+    .title {
+        font-size: clamp(1.8rem, 7vw, 2.5rem);
+    }
+
+    .message {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+}
+
+@media (hover: none) and (pointer: coarse) {
+    .love-button:hover {
+        transform: none;
+    }
+    
+    .love-button:active {
+        transform: translateY(-3px);
+    }
+}
+
+.title {
+    font-family: 'Dancing Script', cursive;
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    color: var(--primary);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+}
+
+.message {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.love-button {
+    padding: 1rem 2rem;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    color: var(--light);
+    border: none;
+    border-radius: 30px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.love-button:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(255, 105, 180, 0.3);
+}
+
+.floating-heart {
+    position: fixed;
+    font-size: 2rem;
+    pointer-events: none;
+    z-index: 1;
+    animation: floatUp 4s ease-out forwards;
+}
+
+.glow-effect {
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at center, 
+        rgba(255, 105, 180, 0.2) 0%,
+        transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+@keyframes float {
+    0%, 100% { transform: translate(-50%, -50%); }
+    50% { transform: translate(-50%, -55%); }
+}
+
+@keyframes floatUp {
+    0% { 
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+    }
+    100% { 
+        transform: translateY(-100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
